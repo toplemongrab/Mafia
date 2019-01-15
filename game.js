@@ -10,15 +10,14 @@ var inventory = [undefined, undefined, undefined];
 
 function draw() {
   c.clearRect(0, 0, width, height);
-  c.beginPath();
   c.fillStyle = '#ff0000';
   c.font = '16px Arial'
   for (var i = 0; i < lives.length; i++) {
     if (lives[i]) {
+      console.log(i + ' lives..');
       c.fillText('life', i * 16, height - 16);
     }
   }
-  c.fill();
 }
 
 function update() {
