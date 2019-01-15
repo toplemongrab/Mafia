@@ -1,2 +1,2 @@
-# mafia
+# Mafia
 Penguin vs. Penguin.
