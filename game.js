@@ -9,7 +9,7 @@ var lives = [true, true, true];
 var inventory = [undefined, undefined, undefined];
 
 function draw() {
-  c.clearRect(0, 0, width, height);
+  //c.clearRect(0, 0, width, height);
   c.strokeStyle = '#ff0000';
   c.font = '16px Arial'
   for (var i = 0; i < lives.length; i++) {
