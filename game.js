@@ -16,7 +16,7 @@ function draw() {
   c.font = '16px Bangers'
   for (var i = 0; i < lives.length; i++) {
     if (lives[i]) {
-      c.fillText('❤️', i * 16, height - 16);
+      c.fillText('&#65039;', i * 16, height - 16);
     }
   }
 }
