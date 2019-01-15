@@ -10,6 +10,8 @@ var inventory = [undefined, undefined, undefined];
 
 function draw() {
   c.clearRect(0, 0, width, height);
+  c.fillStyle = '#ffffff';
+  c.fillRect(0, 0, width, height);
 }
 
 function update() {
