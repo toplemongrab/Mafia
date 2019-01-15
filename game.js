@@ -17,6 +17,7 @@ function draw() {
       c.fillText('❤️', i * 16, height - 16);
     }
   }
+  c.fill();
 }
 
 function update() {
