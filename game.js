@@ -1,6 +1,6 @@
 var c = document.getElementById('c').getContext('2d');
-var width = 500;
-var height = 500;
+var width = 600;
+var height = 300;
 
 var x = 0;
 var y = 0;
