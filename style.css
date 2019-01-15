@@ -15,6 +15,7 @@ html, body {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  background-color: lightgreen;
 }
 
 .header {
@@ -22,6 +23,10 @@ html, body {
   background-color: lightblue;
   padding: 4px;
   text-align: center;
+}
+
+canvas {
+  margin: auto;
 }
 
 .header h1 {
