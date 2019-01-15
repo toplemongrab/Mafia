@@ -14,9 +14,12 @@ function draw() {
   c.font = '16px Arial'
   for (var i = 0; i < lives.length; i++) {
     if (lives[i]) {
-      console.log(i + ' lives..');
-      c.arc(i, height - 25, 25, 0, 2 * Math.PI);
+      c.arc(i * 25, height - 30, 25, 0, 2 * Math.PI);
     }
+  }
+  for (var i = 0; i < inventory.length; i++) {
+    c.strokeStyle = '#000000'
+    c.strokeRect(i * 25 + 100, height - 55, 50, 50);
   }
 }
 
