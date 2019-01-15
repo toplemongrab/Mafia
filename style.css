@@ -27,6 +27,7 @@ html, body {
 
 canvas {
   margin: auto;
+  display: block;
 }
 
 .header h1 {
