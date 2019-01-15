@@ -10,13 +10,11 @@ var inventory = [undefined, undefined, undefined];
 
 function draw() {
   c.clearRect(0, 0, width, height);
-  c.fillStyle = '#ffffff';
-  c.fillRect(0, 0, width, height);
   c.fillStyle = '#ff0000';
-  c.font = '16px Bangers'
+  c.font = '16px Arial'
   for (var i = 0; i < lives.length; i++) {
     if (lives[i]) {
-      c.fillText('&#65039;', i * 16, height - 16);
+      c.fillText('❤️', i * 16, height - 16);
     }
   }
 }
