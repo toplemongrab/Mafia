@@ -18,10 +18,13 @@ html, body {
 
 .header {
   width: 100%;
-  color: lightblue;
+  background-color: lightblue;
+  padding: 4px;
+  text-align: center;
 }
 
 .header h1 {
+  position: relative;
   animation-name: slideLeft;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
@@ -30,6 +33,7 @@ html, body {
 }
 
 .header h4 {
+  position: relative;
   animation-name: slideRight;
   animation-duration: 0.5s;
   animation-iteration-count: 1;
