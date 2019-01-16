@@ -30,8 +30,7 @@ function draw() {
   }
 }
 
-function update() {
-  
+function update() {  
 }
 
 function main() {
