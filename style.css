@@ -18,8 +18,9 @@ html, body {
 }
 
 html {
-  background-image : url('https://cdn.pixabay.com/photo/2015/10/12/15/03/arctic-984127__340.jpg');
-  background-size: cover;
+  background-image: url('http://res.freestockphotos.biz/pictures/6/6307-illustration-of-the-new-york-skyline-pv.png'), url('https://i.pinimg.com/originals/7a/59/aa/7a59aa93f125ba1b231cf885b065293b.png');
+  background-position: bottom center, center center;
+  background-size: 100% auto, auto 100%;
 }
 
 .header {
