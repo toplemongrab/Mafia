@@ -18,6 +18,8 @@ var inventory = [undefined, undefined, undefined];
 
 function draw() {
   c.clearRect(0, 0, width, height);
+  c.fillStyle = '#ffffff';
+  c.fillRect(0, 0, width, height);
   for (i = 0; i < lives.length; i++) {
     if (lives[i]) {
       c.drawImage(heart, i * 50, height - 55, 50, 50);
