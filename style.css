@@ -19,6 +19,7 @@ html, body {
 
 html {
   background-image : url('https://cdn.pixabay.com/photo/2015/10/12/15/03/arctic-984127__340.jpg');
+  background-size: contain;
 }
 
 .header {
