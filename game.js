@@ -26,7 +26,7 @@ function draw() {
     }
   }
   c.fillStyle = '#00ff00';
-  c.fillRect(0, height - 66, hp * 100 / maxHP, 10);
+  c.fillRect(25, height - 66, hp * 100 / maxHP, 10);
   for (i = 0; i < inventory.length; i++) {
     c.strokeStyle = '#000000'
     c.strokeRect(i * 50 + 152, height - 55, 50, 50);
@@ -37,7 +37,7 @@ function update() {
 }
 
 function main() {
-  update();
+  update(); 
   draw();
   window.requestAnimationFrame(main);
  }
