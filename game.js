@@ -27,10 +27,10 @@ function draw() {
       c.drawImage(blackHeart, i * 50, height - 55, 50, 50);
     }
   }
-  c.fillStyle = '#00ff00';
-  c.fillRect(25, height - 66, hp * 100 / maxHP, 10);
   c.fillStyle = '#000000';
   c.fillRect(25, height - 66, 100, 10);
+  c.fillStyle = '#00ff00';
+  c.fillRect(25, height - 66, hp * 100 / maxHP, 10);
   for (i = 0; i < inventory.length; i++) {
     c.strokeStyle = '#000000'
     c.strokeRect(i * 50 + 152, height - 55, 50, 50);
