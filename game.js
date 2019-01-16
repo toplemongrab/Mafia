@@ -7,6 +7,7 @@ var y = 0;
 var i;
 
 var hp = 100;
+var maxHP = 100;
 var heart = new Image();
 heart.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png' //Use offical version when made
 var blackHeart = new Image();
@@ -24,6 +25,8 @@ function draw() {
       c.drawImage(blackHeart, i * 50, height - 55, 50, 50);
     }
   }
+  c.fillStyle = '#00ff00';
+  c.fillRect(0, height - 66, hp * 100 / maxHP, 10);
   for (i = 0; i < inventory.length; i++) {
     c.strokeStyle = '#000000'
     c.strokeRect(i * 50 + 152, height - 55, 50, 50);
