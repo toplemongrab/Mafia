@@ -15,6 +15,7 @@ blackHeart.src = 'https://www.dictionary.com/e/wp-content/uploads/2018/09/black-
 var lives = [true, true, true];
 
 var inventory = [undefined, undefined, undefined];
+var selectedItem = 0;
 
 function draw() {
   c.clearRect(0, 0, width, height);
@@ -32,7 +33,11 @@ function draw() {
   c.fillStyle = '#00ff00';
   c.fillRect(25, height - 66, hp * 100 / maxHP, 10);
   for (i = 0; i < inventory.length; i++) {
-    c.strokeStyle = '#000000'
+    if (i == selectedItem) {
+      c.strokeStyle = '#ffff00';
+    } else {
+      c.strokeStyle = '#000000';
+    }
     c.strokeRect(i * 50 + 152, height - 55, 50, 50);
   }
 }
