@@ -18,8 +18,8 @@ html, body {
 }
 
 html {
-  backgroud-image: url('https://webstockreview.net/images/clipart-free-penguin-4.png');
-  background-size: 100px 200px;
+  background-image: url('https://webstockreview.net/images/clipart-free-penguin-4.png');
+  background-size: 50px 100px;
   backround-repeat: repeat-x repeat-y;
 }
 
