@@ -20,7 +20,7 @@ html, body {
 html {
   background-image: url('http://res.freestockphotos.biz/pictures/6/6307-illustration-of-the-new-york-skyline-pv.png'), url('https://i.pinimg.com/originals/7a/59/aa/7a59aa93f125ba1b231cf885b065293b.png');
   background-position: bottom center, center center;
-  background-size: 100% auto, auto 100%;
+  background-size: 100% auto, auto auto;
   background-repeat: no-repeat, no-repeat;
 }
 
@@ -57,3 +57,4 @@ canvas {
   animation-timing-function: ease-in-out;
   font-size: 18px;
 }
+
