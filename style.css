@@ -15,7 +15,10 @@ html, body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
-  background-color: lightgreen;
+}
+
+html {
+  background-image : url('https://cdn.pixabay.com/photo/2015/10/12/15/03/arctic-984127__340.jpg');
 }
 
 .header {
@@ -31,6 +34,7 @@ canvas {
   margin: auto;
   display: block;
   border: 2px solid black;
+  border-radius: 10%;
 }
 
 .header h1 {
