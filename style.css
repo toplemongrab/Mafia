@@ -17,12 +17,6 @@ html, body {
   overflow-x: hidden;
 }
 
-html {
-  background-image: url('https://webstockreview.net/images/clipart-free-penguin-4.png');
-  background-size: 50px 100px;
-  backround-repeat: repeat-x repeat-y;
-}
-
 .header {
   width: 100%;
   background-color: lightblue;
