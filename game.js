@@ -26,7 +26,7 @@ function draw() {
   }
   for (i = 0; i < inventory.length; i++) {
     c.strokeStyle = '#000000'
-    c.strokeRect(i * 50 + 102, height - 55, 50, 50);
+    c.strokeRect(i * 50 + 152, height - 55, 50, 50);
   }
 }
 
