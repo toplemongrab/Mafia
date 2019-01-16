@@ -38,7 +38,7 @@ function draw() {
     } else {
       c.strokeStyle = '#000000';
     }
-    c.strokeRect(i * 50 + 152, height - 55, 50, 50);
+    c.strokeRect(i * 50 + 154, height - 55, 50, 50);
   }
 }
 
