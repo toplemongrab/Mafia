@@ -19,6 +19,7 @@ var selectedItem = 0;
 
 var started = false;
 var socket;
+var state;
 var name;
 var server = '';
 players = [];
@@ -41,8 +42,10 @@ function start() {
   name = document.getElementById('name').value;
   if (document.getElementById('create').checked) {
     socket = new Peer(document.getElementById('server').value, {'secure':true, 'port':443});
+    state = 0;
   } else {
     var peer = new Peer(null, {'secure':true, 'port':443}); 
+    state = 1;
     socket = peer.connect(document.getElementById('server').value);
   }
   socket.on('data', recv);
@@ -83,8 +86,12 @@ function update() {
     document.getElementById('server').style.display = 'none';
     document.getElementById('create').style.display = 'none';
     if (server) {
-     socket.provider.socket._socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
-    } 
+      if (state == 1) {
+        socket.provider.socket._socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+      } else {
+        socket.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+      }
+    }
   } 
 }
 
