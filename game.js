@@ -18,8 +18,6 @@ var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
 players = []
-var server = io.Server(3000)
-var socket = io('http://localhost:3000');
 function recv(message) {
   console.log('Recieveing data...');
   console.log(message);
@@ -33,10 +31,9 @@ function recv(message) {
     players.push(data);
   }
 }
-socket.on('connect', function () {
-  console.log('Connected!')
-});
-socket.on('message', recv);
+var socket = new WebSocket('ws://127.0.0.1:7777');
+socket.onopen = function(event) { console.log('Connected!'); };
+socket.onmessage = recv;
 
 function draw() {
   c.clearRect(0, 0, width, height);
