@@ -50,3 +50,14 @@ canvas {
   animation-timing-function: ease-in-out;
   font-size: 18px;
 }
+
+.input {
+  margin: auto;
+  display: block;
+}
+
+.input button {
+  font-family: 'Bangers', sans-serif;
+  padding: 2px;
+  background-color: lightblue;
+}
