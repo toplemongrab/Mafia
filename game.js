@@ -18,7 +18,7 @@ var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
 players = []
-var socket = new io.Socket(window.location.hostname);
+var socket = new io.Socket('http://localhost/');
 function recv(message) {
   console.log('Recieveing data...');
   console.log(message);
