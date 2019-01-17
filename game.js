@@ -36,7 +36,7 @@ function recv(message) {
         done = true;
       }
     }
-    if (not done) {
+    if (done == false) {
       players.push(data);
     }
   }
