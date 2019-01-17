@@ -17,6 +17,25 @@ var lives = [true, true, true];
 var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
+players = []
+var socket = new io.Socket();
+function recv(message) {
+  console.log('Recieveing data...');
+  data = JSON.parse(message);
+  if (data['kind'] == 'player') {
+    for (i = 0; i < players.length; i++) {
+      if (players[i]['name'] == message['name']) {
+        delete players[i]
+      }
+    }
+    players.push(data);
+  }
+}
+socket.on('connect', function () {
+  console.log('Connected!')
+});
+socket.on('message', recv);
+
 function draw() {
   c.clearRect(0, 0, width, height);
   c.fillStyle = '#ffffff';
@@ -43,6 +62,7 @@ function draw() {
 }
 
 function update() {  
+  socket.send(JSON.stringify({'kind':'player', 'x':x, 'y':y, 'lives':lives, 'hp':hp}));
 }
 
 function main() {
