@@ -18,7 +18,7 @@ var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
 var started = false;
-ver socket;
+var socket;
 var name;
 var server = '';
 players = [];
