@@ -51,13 +51,14 @@ canvas {
   font-size: 18px;
 }
 
-.input {
+.input, .input * {
   margin: auto;
   display: block;
 }
 
 .input button {
   font-family: 'Bangers', sans-serif;
-  padding: 2px;
+  padding: 4px;
+  border: none;
   background-color: lightblue;
 } 
