@@ -34,6 +34,8 @@ function recv(message) {
 var socket = new WebSocket('ws://127.0.0.1:7777');
 socket.onopen = function(event) { console.log('Connected!'); };
 socket.onmessage = recv;
+socket.onclose = function(event) {};
+socket.onerror = function(event) {};
 
 function draw() {
   c.clearRect(0, 0, width, height);
