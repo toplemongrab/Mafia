@@ -39,7 +39,7 @@ function start() {
   started = true;
   name = document.getElementById('name').value;
   if (document.getElementById('create').checked) {
-    var socket = new Peer(document.getElementById('server').value);
+    var socket = new Peer(document.getElementById('server').value, {'secure':true});
   } else {
     var socket = peer.connect(document.getElementById('server').value);
   }
