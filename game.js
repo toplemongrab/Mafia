@@ -21,6 +21,7 @@ players = []
 var socket = new io.Socket();
 function recv(message) {
   console.log('Recieveing data...');
+  console.log(message);
   data = JSON.parse(message);
   if (data['kind'] == 'player') {
     for (i = 0; i < players.length; i++) {
