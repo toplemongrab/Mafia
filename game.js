@@ -79,9 +79,13 @@ function update() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
     if (server) {
-      socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+      try {
+        socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+      } catch (error) {
+        console.log('Err');
+      }
     } 
-  }
+  } 
 }
 
 function main() {
