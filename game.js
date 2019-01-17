@@ -42,7 +42,7 @@ function start() {
   if (document.getElementById('create').checked) {
     socket = new Peer(document.getElementById('server').value, {'secure':true, 'port':443});
   } else {
-    socket = peer.connect(document.getElementById('server').value);
+    socket = connect(document.getElementById('server').value);
   }
   socket.on('data', recv);
   server = document.getElementById('server').value;
