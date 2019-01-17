@@ -18,7 +18,11 @@ var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
 var started = false;
-var name = 'sugarfi';
+var name;
+function start() {
+  started = true;
+  name = document.getElementById('name').value;
+}
 players = [];
 
 function recv(message) {
