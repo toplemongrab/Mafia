@@ -21,7 +21,7 @@ players = []
 function recv(message) {
   console.log('Recieveing data...');
   console.log(message);
-  data = JSON.parse(message);
+  data = JSON.parse(message.data);
   if (data['kind'] == 'player') {
     for (i = 0; i < players.length; i++) {
       if (players[i]['name'] == message['name']) {
