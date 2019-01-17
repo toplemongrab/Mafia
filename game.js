@@ -48,7 +48,9 @@ function start() {
     state = 1;
     socket = peer.connect(document.getElementById('server').value);
   }
-  socket.on('data', recv);
+  socket.on('open', function() {
+    socket.on('data', recv);
+  });
   server = document.getElementById('server').value;
 }
 
