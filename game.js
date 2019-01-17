@@ -81,7 +81,7 @@ function update() {
     document.getElementById('name').style.display = 'none';
     if (server) {
       try {
-        window.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+        socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
       } catch (error) {
         console.log('Err');
       }
