@@ -40,9 +40,9 @@ function start() {
   started = true;
   name = document.getElementById('name').value;
   if (document.getElementById('create').checked) {
-    var socket = new Peer(document.getElementById('server').value, {'secure':true, 'port':443});
+    socket = new Peer(document.getElementById('server').value, {'secure':true, 'port':443});
   } else {
-    var socket = peer.connect(document.getElementById('server').value);
+    socket = peer.connect(document.getElementById('server').value);
   }
   socket.on('data', recv);
   server = document.getElementById('server').value;
