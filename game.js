@@ -19,7 +19,7 @@ var selectedItem = 0;
 
 var started = false;
 var name;
-var server;
+var server = '';
 players = [];
 
 function recv(message) {
@@ -78,7 +78,9 @@ function update() {
   if (started) {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
-    socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+    if (server) {
+      socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+    } 
   }
 }
 
