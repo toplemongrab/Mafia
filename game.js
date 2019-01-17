@@ -32,7 +32,7 @@ function recv(message) {
     players.push(data);
   }
 }
-io.on('connect', function () {
+socket.on('connect', function () {
   console.log('Connected!')
 });
 socket.on('message', recv);
