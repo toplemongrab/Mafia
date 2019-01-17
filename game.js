@@ -17,7 +17,9 @@ var lives = [true, true, true];
 var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
-players = []
+var name = 'sugarfi';
+players = [];
+
 function recv(message) {
   console.log('Recieveing data...');
   console.log(message);
@@ -64,7 +66,7 @@ function draw() {
 
 function update() {
   if (socket.readyState == 1) {
-   socket.send(JSON.stringify({kind:'player', x:x, y:y, lives:lives, hp:hp}));
+   socket.send(JSON.stringify({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp}));
   }
 }
 
