@@ -52,7 +52,9 @@ canvas {
 }
 
 .input, .input * {
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8px;
   display: block;
 }
 
