@@ -17,6 +17,7 @@ var lives = [true, true, true];
 var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
+var started = false;
 var name = 'sugarfi';
 players = [];
 
@@ -25,48 +26,57 @@ function recv(message) {
   console.log(message);
   data = JSON.parse(message.data);
   if (data['kind'] == 'player') {
+    var done = false;
     for (i = 0; i < players.length; i++) {
       if (players[i]['name'] == message['name']) {
-        delete players[i]
+        done = true;
       }
     }
-    players.push(data);
+    if (not done) {
+      players.push(data);
+    }
   }
 }
 var socket = new WebSocket('wss://echo.websocket.org/');
 socket.onopen = function(event) { console.log('Connected!'); };
 socket.onmessage = recv;
-socket.onclose = function(event) {};
+socket.onclose = function(event) { console.log('Not connected.'); };
 socket.onerror = function(event) {};
 
 function draw() {
   c.clearRect(0, 0, width, height);
   c.fillStyle = '#ffffff';
   c.fillRect(0, 0, width, height);
-  for (i = 0; i < lives.length; i++) {
-    if (lives[i]) {
-      c.drawImage(heart, i * 50, height - 55, 50, 50);
-    } else {
-      c.drawImage(blackHeart, i * 50, height - 55, 50, 50);
+  if (started) {
+    for (i = 0; i < lives.length; i++) {
+      if (lives[i]) {
+        c.drawImage(heart, i * 50, height - 55, 50, 50);
+      } else {
+        c.drawImage(blackHeart, i * 50, height - 55, 50, 50);
+      }
     }
-  }
-  c.fillStyle = '#000000';
-  c.fillRect(25, height - 66, 100, 10);
-  c.fillStyle = '#00ff00';
-  c.fillRect(25, height - 66, hp * 100 / maxHP, 10);
-  for (i = 0; i < inventory.length; i++) {
-    if (i == selectedItem) {
-      c.strokeStyle = '#ffff00';
-    } else {
-      c.strokeStyle = '#000000';
+    c.fillStyle = '#000000';
+    c.fillRect(25, height - 66, 100, 10);
+    c.fillStyle = '#00ff00';
+    c.fillRect(25, height - 66, hp * 100 / maxHP, 10);
+    for (i = 0; i < inventory.length; i++) {
+      if (i == selectedItem) {
+        c.strokeStyle = '#ffff00';
+      } else {
+        c.strokeStyle = '#000000';
+      }
+      c.strokeRect(i * 50 + 154, height - 55, 50, 50);
     }
-    c.strokeRect(i * 50 + 154, height - 55, 50, 50);
   }
 }
 
 function update() {
-  if (socket.readyState == 1) {
-   socket.send(JSON.stringify({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp}));
+  if (started) {
+    document.getElementById('start').style.display = 'none';
+    document.getElementById('name').style.display = 'none';
+    if (socket.readyState == 1) {
+     socket.send(JSON.stringify({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+    }
   }
 }
 
