@@ -51,7 +51,6 @@ function start() {
   socket.on('open', function(id) {
     console.log('Connection opened');
     socket.on('data', recv);
-    socket.send('Connected. My id: ' + id);
   });
   server = document.getElementById('server').value;
 }
