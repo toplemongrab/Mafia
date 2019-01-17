@@ -79,6 +79,8 @@ function update() {
   if (started) {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
+    document.getElementById('server').style.display = 'none';
+    document.getElementById('create').style.display = 'none';
     if (server) {
      socket.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     } 
