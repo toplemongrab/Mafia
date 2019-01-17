@@ -62,8 +62,10 @@ function draw() {
   }
 }
 
-function update() {  
-  socket.send(JSON.stringify({'kind':'player', 'x':x, 'y':y, 'lives':lives, 'hp':hp}));
+function update() {
+  if (socket.readyState == 1) {
+   socket.send(JSON.stringify({'kind':'player', 'x':x, 'y':y, 'lives':lives, 'hp':hp}));
+  }
 }
 
 setInterval(update, 500);
