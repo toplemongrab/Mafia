@@ -19,33 +19,33 @@ var selectedItem = 0;
 
 var started = false;
 var name;
-function start() {
-  started = true;
-  name = document.getElementById('name').value;
-}
+var server;
 players = [];
 
 function recv(message) {
   console.log('Recieveing data...');
   console.log(message);
-  data = JSON.parse(message.data);
+  data = JSON.parse(message);
   if (data['kind'] == 'player') {
-    var done = false;
     for (i = 0; i < players.length; i++) {
       if (players[i]['name'] == message['name']) {
-        done = true;
+        players[i] = message
       }
-    }
-    if (done == false) {
-      players.push(data);
     }
   }
 }
-var socket = new WebSocket('wss://websocket.org');
-socket.onopen = function(event) { console.log('Connected!'); };
-socket.onmessage = recv;
-socket.onclose = function(event) { console.log('Not connected.'); };
-socket.onerror = function(event) {};
+
+function start() {
+  started = true;
+  name = document.getElementById('name').value;
+  if (document.getElementById('create').checked) {
+    var socket = new Peer(document.getElementById('server').value);
+  } else {
+    var socket = peer.connect(document.getElementById('server').value);
+  }
+  socket.on('data', recv);
+  server = document.getElementById('server').value;
+}
 
 function draw() {
   c.clearRect(0, 0, width, height);
@@ -79,7 +79,7 @@ function update() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
     if (socket.readyState == 1) {
-     socket.send(JSON.stringify({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+     socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     }
   }
 }
