@@ -64,7 +64,7 @@ function draw() {
 
 function update() {
   if (socket.readyState == 1) {
-   socket.send(JSON.stringify({'kind':'player', 'x':x, 'y':y, 'lives':lives, 'hp':hp}));
+   socket.send(JSON.stringify({kind:'player', x:x, y:y, lives:lives, hp:hp}));
   }
 }
 
