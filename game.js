@@ -18,7 +18,7 @@ var inventory = [undefined, undefined, undefined];
 var selectedItem = 0;
 
 players = []
-var socket = new io();
+var socket = new io.Socket();
 function recv(message) {
   console.log('Recieveing data...');
   console.log(message);
@@ -32,7 +32,7 @@ function recv(message) {
     players.push(data);
   }
 }
-socket.on('connect', function () {
+io.on('connect', function () {
   console.log('Connected!')
 });
 socket.on('message', recv);
