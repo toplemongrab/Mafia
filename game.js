@@ -31,7 +31,7 @@ function recv(message) {
     players.push(data);
   }
 }
-var socket = new WebSocket('wss://www.websockets.org');
+var socket = new WebSocket('wss://echo.websockets.org');
 socket.onopen = function(event) { console.log('Connected!'); };
 socket.onmessage = recv;
 socket.onclose = function(event) {};
