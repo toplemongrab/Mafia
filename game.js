@@ -78,16 +78,13 @@ function update() {
   if (started) {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
-    if (socket.readyState == 1) {
-     socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
-    }
+    socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
   }
 }
 
-setInterval(update, 500);
-
 function main() {
   draw();
+  update();
   window.requestAnimationFrame(main);
  }
  
