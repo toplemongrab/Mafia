@@ -6,7 +6,6 @@
     <meta http-equiv='cache-control' content='no-cache'>
     <meta http-equiv='expires' content='0'>
     <meta http-equiv='pragma' content='no-cache'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
   </head>
   <body>
     <div class="header">
@@ -15,7 +14,9 @@
     </div>
     <canvas id="c" width=600 height=300></canvas>
     <script src="game.js"></script>
-    <input type="text" id="name"/>
-    <button onclick="start">Play!</button>
+    <div class="input">
+      <input type="text" id="name"/>
+      <button onclick="start();">Play!</button>
+    </div>
   </body>
 </html>
