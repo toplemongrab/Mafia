@@ -48,8 +48,10 @@ function start() {
     state = 1;
     socket = peer.connect(document.getElementById('server').value);
   }
-  socket.on('open', function() {
+  socket.on('open', function(id) {
+    console.log('Connection opened');
     socket.on('data', recv);
+    socket.send('Connected. My id: ' + id);
   });
   server = document.getElementById('server').value;
 }
