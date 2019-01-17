@@ -41,7 +41,7 @@ function recv(message) {
     }
   }
 }
-var socket = new WebSocket('wss://echo.websocket.org/');
+var socket = new WebSocket('wss://45.32.130.108:443');
 socket.onopen = function(event) { console.log('Connected!'); };
 socket.onmessage = recv;
 socket.onclose = function(event) { console.log('Not connected.'); };
