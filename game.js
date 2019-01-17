@@ -66,8 +66,9 @@ function update() {
   socket.send(JSON.stringify({'kind':'player', 'x':x, 'y':y, 'lives':lives, 'hp':hp}));
 }
 
+setInterval(update, 500);
+
 function main() {
-  update(); 
   draw();
   window.requestAnimationFrame(main);
  }
