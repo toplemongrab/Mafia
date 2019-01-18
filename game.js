@@ -24,19 +24,6 @@ var name;
 var server = '';
 players = [];
 
-function recv(message) {
-  console.log('Recieveing data...');
-  console.log(message);
-  data = JSON.parse(message);
-  if (data['kind'] == 'player') {
-    for (i = 0; i < players.length; i++) {
-      if (players[i]['name'] == message['name']) {
-        players[i] = message
-      }
-    }
-  }
-}
-
 function start() {
   started = true;
   name = document.getElementById('name').value;
@@ -50,7 +37,18 @@ function start() {
   }
   socket.on('open', function(id) {
     console.log('Connection opened');
-    socket.on('data', recv);
+    socket.on('data', function (message) {
+      console.log('Recieveing data...');
+      console.log(message);
+      data = JSON.parse(message);
+      if (data['kind'] == 'player') {
+        for (i = 0; i < players.length; i++) {
+          if (players[i]['name'] == message['name']) {
+            players[i] = message
+          }
+        }
+      }
+    });
   });
   server = document.getElementById('server').value;
 }
@@ -89,7 +87,7 @@ function update() {
     document.getElementById('server').style.display = 'none';
     document.getElementById('create').style.display = 'none';
     if (state == 1) {
-      socket.provider.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+      socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     } else {
       socket.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     }
