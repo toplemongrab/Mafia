@@ -36,7 +36,7 @@ function recv(message) {
 function start() {
   started = true;
   name = document.getElementById('name').value;
-  socket = new WebSocket('wss:/192.168.1.25:1234');
+  socket = new WebSocket('wss://192.168.1.25:1234');
   socket.onmessage = recv;
   socket.onopen = function() { console.log('Connected') };
 }
