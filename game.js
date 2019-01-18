@@ -9,7 +9,7 @@ var i;
 var hp = 100;
 var maxHP = 100;
 var heart = new Image();
-heart.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png' //Use offical version when made
+heart.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png' // Use offical version when made
 var blackHeart = new Image();
 blackHeart.src = 'https://www.dictionary.com/e/wp-content/uploads/2018/09/black-heart.png' // Replace with offical too
 var lives = [true, true, true];
@@ -26,7 +26,7 @@ function recv(message) {
   message = message.data;
   if (message['kind'] == 'player') {
     for (i = 0; i < players.length; i++) {
-      if (players['name'] == message['name']) {
+      if (players[i]['name'] == message['name']) {
         players[i] = message;
       }
     }
@@ -39,6 +39,7 @@ function start() {
   socket = new WebSocket('wss://apprtc-ws.webrtc.org/ws');
   socket.onmessage = recv;
   socket.onopen = function() { console.log('Connected') };
+  players.push({'kind':'player', 'name':name, 'x':x, 'y':y, 'lives':lives, 'hp':hp, 'inventory':inventory, 'selectedItem':selectedItem}
 }
   
 function draw() {
