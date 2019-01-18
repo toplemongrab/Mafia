@@ -36,7 +36,7 @@ function recv(message) {
 function start() {
   started = true;
   name = document.getElementById('name').value;
-  socket = new WebSocket('wss://127.0.0.1:7777');
+  socket = new WebSocket('wss://apprtc-ws.webrtc.org/ws');
   socket.onmessage = recv;
   socket.onopen = function() { console.log('Connected') };
 }
