@@ -39,7 +39,7 @@ function start() {
   socket = new WebSocket('wss://apprtc-ws.webrtc.org/ws');
   socket.onmessage = recv;
   socket.onopen = function() { console.log('Connected') };
-  players.push({'kind':'player', 'name':name, 'x':x, 'y':y, 'lives':lives, 'hp':hp, 'inventory':inventory, 'selectedItem':selectedItem}
+  players.push({'kind':'player', 'name':name, 'x':x, 'y':y, 'lives':lives, 'hp':hp, 'inventory':inventory, 'selectedItem':selectedItem});
 }
   
 function draw() {
