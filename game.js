@@ -87,8 +87,10 @@ function update() {
     document.getElementById('server').style.display = 'none';
     document.getElementById('create').style.display = 'none';
     if (state == 1) {
+      console.log('Sending with state 1');
       socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     } else {
+      console.log('Sending with state 0');
       socket.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     }
   } 
