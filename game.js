@@ -25,12 +25,12 @@ players = [];
 function recv(message) {
   message = message.data;
   console.log('Reciveing');
-  console.log(message['kind']);
+  console.log(message.kind);
   if (message['kind'] == 'player') {
     for (i = 0; i < players.length; i++) {
-      console.log(players[i]['name']);
-      console.log(message['name']);
-      if (players[i]['name'] == message['name']) {
+      console.log(players[i].name);
+      console.log(message.name);
+      if (players[i].name == message.name.) {
         players[i] = message;
       }
     }
@@ -43,7 +43,7 @@ function start() {
   socket = new WebSocket('wss://apprtc-ws.webrtc.org/ws');
   socket.onmessage = recv;
   socket.onopen = function() { console.log('Connected') };
-  players.push({'kind':'player', 'name':name, 'x':x, 'y':y, 'lives':lives, 'hp':hp, 'inventory':inventory, 'selectedItem':selectedItem});
+  players.push({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem});
 }
   
 function draw() {
