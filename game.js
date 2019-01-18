@@ -23,10 +23,10 @@ var name;
 players = [];
 
 function recv(message) {
-  message = message.data;
+  message = JSON.parse(message.data);
   console.log('Reciveing');
-  console.log(message.kind);
-  if (message['kind'] == 'player') {
+  console.log(message);
+  if (message.kind == 'player') {
     for (i = 0; i < players.length; i++) {
       console.log(players[i].name);
       console.log(message.name);
@@ -78,6 +78,7 @@ function update() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
     if (socket.readyState == 1) {
+      console.log('Sending');
       socket.send(JSON.stringify({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
     }
    } 
