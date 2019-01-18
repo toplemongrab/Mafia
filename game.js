@@ -37,8 +37,8 @@ function start() {
   started = true;
   name = document.getElementById('name').value;
   socket = new WebSocket('wss:/192.168.1.25:1234');
-  socket.onmessage(recv);
-  socket.onopen(function() { console.log('Connected') });
+  socket.onmessage = recv;
+  socket.onopen = function() { console.log('Connected') };
 }
   
 function draw() {
@@ -72,8 +72,6 @@ function update() {
   if (started) {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
-    document.getElementById('server').style.display = 'none';
-    document.getElementById('create').style.display = 'none';
     socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
   } 
 }
