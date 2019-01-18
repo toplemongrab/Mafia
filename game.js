@@ -19,41 +19,28 @@ var selectedItem = 0;
 
 var started = false;
 var socket;
-var state;
 var name;
-var server = '';
 players = [];
+
+function recv(message) {
+  message = message.data;
+  if (messgae['kind'] == player) {
+    for (i = 0; i < players.length; i++) {
+      if (players['name'] == message['name']) {
+        players[i] = message;
+      }
+    }
+  }
+}
 
 function start() {
   started = true;
   name = document.getElementById('name').value;
-  if (document.getElementById('create').checked) {
-    socket = new Peer(document.getElementById('server').value, {'secure':true, 'port':443});
-    state = 0;
-  } else {
-    var peer = new Peer(null, {'secure':true, 'port':443}); 
-    state = 1;
-    socket = peer.connect(document.getElementById('server').value);
-  }
-  socket.open = true;
-  socket.on('open', function(id) {
-    console.log('Connection opened');
-    socket.on('data', function (message) {
-      console.log('Recieveing data...');
-      console.log(message);
-      data = JSON.parse(message);
-      if (data['kind'] == 'player') {
-        for (i = 0; i < players.length; i++) {
-          if (players[i]['name'] == message['name']) {
-            players[i] = message
-          }
-        }
-      }
-    });
-  });
-  server = document.getElementById('server').value;
+  socket = new WebSocket('wss:/192.168.1.25:1234');
+  socket.onmessage(recv);
+  socket.onopen(function() { console.log('Connected') });
 }
-
+  
 function draw() {
   c.clearRect(0, 0, width, height);
   c.fillStyle = '#ffffff';
@@ -87,13 +74,7 @@ function update() {
     document.getElementById('name').style.display = 'none';
     document.getElementById('server').style.display = 'none';
     document.getElementById('create').style.display = 'none';
-    if (state == 1) {
-      console.log('Sending with state 1');
-      socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
-    } else {
-      console.log('Sending with state 0');
-      socket.socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
-    }
+    socket.send(JSON.stringify({kind:'player', server:server, name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
   } 
 }
 
