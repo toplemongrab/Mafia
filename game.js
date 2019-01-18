@@ -35,6 +35,7 @@ function start() {
     state = 1;
     socket = peer.connect(document.getElementById('server').value);
   }
+  socket.open = true;
   socket.on('open', function(id) {
     console.log('Connection opened');
     socket.on('data', function (message) {
