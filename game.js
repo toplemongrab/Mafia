@@ -24,7 +24,7 @@ players = [];
 
 function recv(message) {
   message = message.data;
-  if (message['kind'] == player) {
+  if (message['kind'] == 'player') {
     for (i = 0; i < players.length; i++) {
       if (players['name'] == message['name']) {
         players[i] = message;
