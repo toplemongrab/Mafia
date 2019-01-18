@@ -27,6 +27,8 @@ function recv(message) {
   console.log('Reciveing');
   if (message['kind'] == 'player') {
     for (i = 0; i < players.length; i++) {
+      console.log(players[i].name);
+      console.log(message.name);
       if (players[i]['name'] == message['name']) {
         players[i] = message;
       }
