@@ -79,7 +79,7 @@ function update() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('name').style.display = 'none';
     if (socket.readyState == 1) {
-      socket.send(JSON.stringify({kind:'player', name:name, x:x, y:y, lives:lives, hp:hp, inventory:inventory, selectedItem:selectedItem}));
+      socket.send(JSON.stringify({'kind':'player', 'name':name, 'x':x, 'y':y, 'lives':lives, 'hp':hp, 'inventory':inventory, 'selectedItem':selectedItem}));
     }
    } 
 }
