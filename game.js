@@ -24,6 +24,9 @@ players = [];
 
 function recv(message) {
   message = JSON.parse(message.data);
+  console.log(message.kind);
+  console.log(message['kind']);
+  console.log(message);
   if (message.kind == 'player') {
     for (i = 0; i < players.length; i++) {
       console.log(players[i].name);
